@@ -45,4 +45,5 @@ pack buildpack new applaudo/mkdocs --api 0.8 --path mkdocs-buildpack --version 0
 pack config trusted-builders add mkdocs-builder:focal
 pack builder create mkdocs-builder:focal --config ./buildpack-builder/builder.toml
 pack build my-app --builder mkdocs-builder:focal --path mkdocs-sample/ -v
+docker run --rm -p 8080:8080 my-app
 ```
