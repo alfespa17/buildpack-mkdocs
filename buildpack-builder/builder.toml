@@ -1,6 +1,15 @@
+api = "0.8"
+
+[buildpack]
+  id = "applaudo/mkdocs"
+  version = "0.0.1"
+
+[[stacks]]
+  id = "io.buildpacks.applaudo.stacks.focal"
+azureuser@ubuntu-poc:~/git/buildpack-mkdocs$ cat buildpack-builder/builder.toml
 # Buildpacks to include in builder
 [[buildpacks]]
-uri = "./buildpack/mkdocs-buildpack"
+uri = "buildpack/mkdocs-buildpack"
 
 # Order used for detection
 [[order]]

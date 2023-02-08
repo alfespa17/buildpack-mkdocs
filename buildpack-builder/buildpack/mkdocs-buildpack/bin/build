@@ -7,14 +7,14 @@ echo "---> Mkdocs Buildpack"
 layersdir=$1
 
 # 2. CREATE THE LAYER DIRECTORY
-mkdocslayer="$layersdir"/mkdocks
+mkdocslayer="$layersdir"/sites
 mkdir -p "$mkdocslayer"
-
-# 3. MAKE MKDCOS AVAILABLE DURING LAUNCH
-echo -e '[types]\nlaunch = true' > "$layersdir/mkdocs.toml"
 
 echo "---> Generating Statics Files"
 mkdocs build
+
+# 3. MAKE MKDCOS AVAILABLE DURING LAUNCH
+echo -e '[types]\nlaunch = true' > "$layersdir/sites.toml"
 
 # ========== ADDED ===========
 # 7. SET DEFAULT START COMMAND
