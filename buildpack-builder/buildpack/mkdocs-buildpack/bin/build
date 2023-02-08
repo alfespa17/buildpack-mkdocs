@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -eo pipefail
+
+echo "---> Mkdocs Buildpack"
+
+# 1. GET ARGS
+layersdir=$1
+
+# 2. CREATE THE LAYER DIRECTORY
+mkdocslayer="$layersdir"/mkdocks
+mkdir -p "$mkdocslayer"
+
+# 3. MAKE MKDCOS AVAILABLE DURING LAUNCH
+echo -e '[types]\nlaunch = true' > "$layersdir/mkdocs.toml"
+
+echo "---> Generating Statics Files"
+mkdocs build
+
+# ========== ADDED ===========
+# 7. SET DEFAULT START COMMAND
+cat > "$layersdir/launch.toml" << EOL
+[[processes]]
+type = "web"
+command = "mkdocs serve"
+default = true
+EOL

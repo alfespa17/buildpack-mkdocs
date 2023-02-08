@@ -1,0 +1,6 @@
+site_name: Applaudo Docs
+site_url: ""
+nav:
+    - Home: index.md
+    - About: about.md
+theme: readthedocs

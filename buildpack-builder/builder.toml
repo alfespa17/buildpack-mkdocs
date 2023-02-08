@@ -1,0 +1,18 @@
+# Buildpacks to include in builder
+[[buildpacks]]
+uri = "./buildpack/mkdocs-buildpack"
+
+# Order used for detection
+[[order]]
+    # This buildpack will display build-time information (as a dependency)
+    [[order.group]]
+    id = "applaudo/mkdocs"
+    version = "0.0.1"
+
+# Stack that will be used by the builder
+[stack]
+id = "io.buildpacks.applaudo.stacks.focal"
+# This image is used at runtime
+run-image = "cnbs/applaudo-stack-run:focal"
+# This image is used at build-time
+build-image = "cnbs/applaudo-stack-build:focal"
