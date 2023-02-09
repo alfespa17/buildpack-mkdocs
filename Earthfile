@@ -3,6 +3,4 @@ FROM earthfile-pack:focal
 WORKDIR /docs-workdir
 
 build:
-    WITH DOCKER
-        RUN echo "Hello"
-    END
+    RUN pack builder suggest

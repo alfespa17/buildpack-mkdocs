@@ -47,3 +47,8 @@ pack builder create mkdocs-builder:focal --config ./buildpack-builder/builder.to
 pack build my-app --builder mkdocs-builder:focal --path mkdocs-sample/ -v
 docker run --rm -p 8080:8080 my-app
 ```
+
+
+# Earthfile
+
+docker build . -t earthfile-pack:focal
