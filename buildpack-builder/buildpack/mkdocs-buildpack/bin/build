@@ -21,6 +21,6 @@ echo -e '[types]\nlaunch = true' > "$layersdir/sites.toml"
 cat > "$layersdir/launch.toml" << EOL
 [[processes]]
 type = "web"
-command = "mkdocs serve -a 127.0.0.1:8080"
+command = "mkdocs serve -a 0.0.0:8080"
 default = true
 EOL
