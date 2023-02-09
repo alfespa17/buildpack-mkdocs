@@ -27,6 +27,8 @@ RUN apt-get update && \
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir mkdocs
 
+EXPOSE 8080
+
 # 6. Set user and group (as declared in base image)
 USER ${CNB_USER_ID}:${CNB_GROUP_ID}
 
