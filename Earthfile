@@ -8,6 +8,7 @@ deps:
    RUN pack builder suggest 
    COPY buildpack-builder ./buildpack-builder
    RUN ls
+   RUN docker run hello-world
    RUN pack builder create mkdocs-builder:focal --config ./buildpack-builder/builder.toml
 
 build:
