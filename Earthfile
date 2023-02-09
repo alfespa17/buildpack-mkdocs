@@ -13,6 +13,4 @@ deps:
 
 build:
    FROM earthly/dind:ubuntu
-   WITH DOCKER --load test:latest=+deps
-        RUN pack builder suggest
-   END
+   RUN docker run hello-world
