@@ -19,6 +19,8 @@ RUN apt update && \
 # 5. Start a new run stage
 FROM base as run
 
+ARG DEBIAN_FRONTEND=noninteractive
+
 # Install custom packages for run image
 RUN apt-get update && \
   apt-get install -y git wget jq python3 python3-pip curl wget apt-transport-https software-properties-common && \
