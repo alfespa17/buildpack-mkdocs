@@ -12,4 +12,8 @@ build:
    COPY mkdocs-sample/docs ./docs
    COPY mkdocs-sample/mkdocs.yml ./mkdocs.yml
    RUN mkdocs build
+   ENTRYPOINT ["mkdocs", "serve", "-a", "0.0.0.0:8080"]
+   SAVE IMAGE my-docs:latest
+
+
 
