@@ -11,17 +11,17 @@ uri = "buildpack/mkdocs-az-buildpack"
 # Order used for detection
 [[order]]
 [[order.group]]
+id = "applaudo/mkdocsaz"
+version = "0.0.1"
+
+[[order]]
+[[order.group]]
 id = "applaudo/mkdocs"
 version = "0.0.1"
 
 [[order]]
 [[order.group]]
 id = "applaudo/sphynx"
-version = "0.0.1"
-
-[[order]]
-[[order.group]]
-id = "applaudo/mkdocsaz"
 version = "0.0.1"
 
 # Stack that will be used by the builder

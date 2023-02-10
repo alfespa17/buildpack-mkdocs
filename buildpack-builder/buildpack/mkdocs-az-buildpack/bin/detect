@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -eo pipefail
 
-if [[ ! -f azure-mkdocs ]]; then
+if [[ ! -f mkdocs.yml ]] && [[ ! -f azure-mkdocs ]]; then
   exit 100
 else
   echo "--->azure-mkdocs found"
