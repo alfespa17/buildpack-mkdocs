@@ -21,11 +21,15 @@ FROM base as run
 
 # Install custom packages for run image
 RUN apt-get update && \
-  apt-get install -y git wget jq python3 python3-pip && \
+  apt-get install -y git wget jq python3 python3-pip make && \
   rm -rf /var/lib/apt/lists/*
 
 RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir mkdocs
+    pip install --no-cache-dir mkdocs && \
+    pip install --no-cache-dir sphinx
+
+RUN curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash - && \
+    apt-get install -y nodejs
 
 # 6. Set user and group (as declared in base image)
 USER ${CNB_USER_ID}:${CNB_GROUP_ID}

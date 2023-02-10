@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -eo pipefail
+
+if [[ ! -f ./source/index.rst ]]; then
+  exit 100
+else
+  echo "--->index.rst found"
+fi

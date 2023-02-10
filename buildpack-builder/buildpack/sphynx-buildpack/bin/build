@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -eo pipefail
+
+echo "---> Mkdocs Buildpack"
+
+# 1. GET ARGS
+layersdir=$1
+
+# 2. CREATE THE LAYER DIRECTORY
+sphynxlayer="$layersdir"/sites
+mkdir -p "$sphynxlayer"
+
+echo "---> Generating Statics Files"
+make html
+
+# 3. MAKE SPHYNX AVAILABLE DURING LAUNCH
+echo -e '[types]\nlaunch = true' > "$layersdir/sites.toml"
+
+# ========== ADDED ===========
+# 7. SET DEFAULT START COMMAND
+cat > "$layersdir/launch.toml" << EOL
+[[processes]]
+type = "web"
+command = "http-server ./build/html/ -p 8080"
+default = true
+EOL
