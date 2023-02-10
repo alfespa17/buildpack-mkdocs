@@ -1,7 +1,7 @@
 api = "0.8"
 
 [buildpack]
-  id = "applaudo/mkdocs-az"
+  id = "applaudo/mkdocsaz"
   version = "0.0.1"
 
 [[stacks]]
