@@ -1,0 +1,8 @@
+api = "0.8"
+
+[buildpack]
+  id = "applaudo/mkdocs-az"
+  version = "0.0.1"
+
+[[stacks]]
+  id = "io.buildpacks.applaudo.stacks.focal"

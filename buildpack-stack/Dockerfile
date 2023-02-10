@@ -21,8 +21,13 @@ FROM base as run
 
 # Install custom packages for run image
 RUN apt-get update && \
-  apt-get install -y git wget jq python3 python3-pip curl && \
+  apt-get install -y git wget jq python3 python3-pip curl wget apt-transport-https software-properties-common && \
   rm -rf /var/lib/apt/lists/*
+
+RUN wget -q "https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb" &&  \
+    dpkg -i packages-microsoft-prod.deb && \
+    apt-get update && \
+    apt-get install -y powershell
 
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir mkdocs 
