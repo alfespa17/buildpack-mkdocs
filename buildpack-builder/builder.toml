@@ -7,14 +7,14 @@ uri = "buildpack/sphynx-buildpack"
 
 # Order used for detection
 [[order]]
-    # This buildpack will display build-time information (as a dependency)
-    [[order.group]]
-    id = "applaudo/mkdocs"
-    version = "0.0.1"
+[[order.group]]
+id = "applaudo/mkdocs"
+version = "0.0.1"
 
-    [[order.group]]
-    id = "applaudo/sphynx"
-    version = "0.0.1"
+[[order]]
+[[order.group]]
+id = "applaudo/sphynx"
+version = "0.0.1"
 
 # Stack that will be used by the builder
 [stack]
