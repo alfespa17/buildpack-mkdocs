@@ -36,9 +36,11 @@ deployment:
    RUN --no-cache chmod +x azcopy-exec/azcopy_linux_amd64_10.17.0/azcopy
    RUN cp azcopy-exec/azcopy_linux_amd64_10.17.0/azcopy /usr/local/bin/
    COPY +build/site site
+   ARG AZCOPY_SPA_APPLICATION_ID
+   ARG AZCOPY_AUTO_LOGIN_TYPE
+   ARG AZCOPY_SPA_CLIENT_SECRET
+   ARG AZCOPY_TENANT_ID
    ARG DEPLOYMENT_BLOB_SERVICE_URL
-   ARG DEPLOYMENT_SITE_DIRECTORY
-   ARG SAS_TOKEN
    WORKDIR /deployment
    RUN --no-cache pwd
    COPY deploy.sh deploy.sh
@@ -47,8 +49,8 @@ deployment:
    WORKDIR /deployment/site
    RUN --no-cache ls
    WORKDIR /deployment
-   RUN echo "$DEPLOYMENT_BLOB_SERVICE_URL\$web$SAS_TOKEN"
-   RUN --no-cache ./deploy.sh
+   RUN echo "$DEPLOYMENT_BLOB_SERVICE_URL\$web"
+   RUN --no-cache azcopy copy "/deployment/site" "DEPLOYMENT_BLOB_SERVICE_URL\$web" --recursive=true --as-subdir=false
 
 all:
    BUILD +build
