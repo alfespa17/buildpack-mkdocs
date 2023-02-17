@@ -8,7 +8,7 @@
   * Add index.html
   * Add error.html
 * azCopy
-* SAS object level permission to the container
+* Service Principal with Blob Storage Data Contributor
 
 The endpoint will be available in the following link
 
@@ -51,12 +51,18 @@ Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force
 ## Powershell Script Deploy Static Site.
 
 ```bash
-# secret AZCOPY_SPA_CLIENT_SECRET in ENV var
-pwsh deploy.ps1 -blobservice "https://docpoc.blob.core.windows.net/" -directory "/mnt/c/git_applaudo/sa-poc-documentation-deployment/mkdocs-sample/site/" -sas "?sv=2021-06-08&ss=bfqt&srt=o&sp=rwdlacupiytfx&se=2023-02-17T01:30:50Z&st=2023-02-16T17:30:50Z&spr=https&sig=%2B%2FFytd6u%2FVn3O%2BabRqYV%3D"
+export DEPLOYMENT_BLOB_SERVICE_URL=""
+export AZCOPY_SPA_APPLICATION_ID="";
+export AZCOPY_AUTO_LOGIN_TYPE="SPN";
+export AZCOPY_SPA_CLIENT_SECRET="";
+export AZCOPY_TENANT_ID="";
+pwsh deploy.ps1
 ```
-
 
 ```bash
- azcopy copy "./site" 'https://docpoc.blob.core.windows.net/$web/?[SAS]' --recursive=true --as-subdir=false
+ azcopy copy "./site" 'https://XXXXX.blob.core.windows.net/$web/?[SAS]' --recursive=true --as-subdir=false
 ```
+
+## Earthly Deployment
+earthly +deployment --DEPLOYMENT_BLOB_SERVICE_URL="https://XXXXX.blob.core.windows.net/" --AZCOPY_SPA_APPLICATION_ID="" --AZCOPY_TENANT_ID="" --AZCOPY_SPA_CLIENT_SECRET="" --AZCOPY_AUTO_LOGIN_TYPE="SPN"
 
