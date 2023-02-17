@@ -13,4 +13,4 @@ write-host "Directory: ${directory}"
 write-host "Command: azcopy copy `"${directory}`" `"${destination}`" --recursive=true --as-subdir=false"
 
 # Send data to Azure Storage Account
-azcopy copy "${directory}" "${destination}" --recursive=true --as-subdir=false
+azcopy copy $directory $destination --recursive=true --as-subdir=false
