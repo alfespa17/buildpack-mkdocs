@@ -41,7 +41,7 @@ deployment:
    ARG DEPLOYMENT_SITE_DIRECTORY
    ARG SAS_TOKEN
    COPY deploy.ps1 deploy.ps1
-   RUN pwsh deploy.ps1
+   RUN --no-cache pwsh deploy.ps1
 
 all:
    BUILD +build
