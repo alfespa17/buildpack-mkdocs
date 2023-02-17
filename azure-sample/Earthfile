@@ -27,7 +27,6 @@ deployment:
      apt-get install -y powershell
 
    RUN mkdir /deployment/
-   RUN cd /deployment
    WORKDIR /deployment
    RUN ls
    RUN wget https://aka.ms/downloadazcopy-v10-linux
