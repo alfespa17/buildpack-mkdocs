@@ -41,13 +41,15 @@ deployment:
    ARG SAS_TOKEN
    WORKDIR /deployment
    RUN --no-cache pwd
-   COPY deploy.ps1 deploy.ps1
+   COPY deploy.sh deploy.sh
+   RUN chmod +x deploy.sh
    RUN --no-cache ls
    WORKDIR /deployment/site
    RUN --no-cache ls
    WORKDIR /deployment
    RUN echo "$DEPLOYMENT_BLOB_SERVICE_URL\$web$SAS_TOKEN"
-   RUN --no-cache azcopy copy "/deployment/site" "$DEPLOYMENT_BLOB_SERVICE_URL\$web$SAS_TOKEN" --recursive=true --as-subdir=false
+   CP
+   RUN --no-cache ./deploy.sh
 
 all:
    BUILD +build
