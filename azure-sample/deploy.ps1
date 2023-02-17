@@ -7,7 +7,7 @@ $sas=$Env:SAS_TOKEN
 
 # Write General Information to Host
 write-host "Destination blob: ${blobservice}`$web${sas}"
-$destination = "${blobservice}`$web?${sas}"
+$destination = "${blobservice}`$web${sas}"
 write-host "Directory: ${directory}"
 
 write-host "Command: azcopy copy `"${directory}`" `"${destination}`" --recursive=true --as-subdir=false"
