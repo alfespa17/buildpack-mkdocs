@@ -10,8 +10,8 @@ build:
    RUN mkdir /server/
    RUN cd /server
    WORKDIR /server
-   COPY ../mkdocs-sample/docs ./docs
-   COPY ../mkdocs-sample/mkdocs.yml ./mkdocs.yml
+   COPY mkdocs-sample/docs ./docs
+   COPY mkdocs-sample/mkdocs.yml ./mkdocs.yml
    RUN mkdocs build
    SAVE ARTIFACT site /site
 
