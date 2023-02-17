@@ -46,6 +46,7 @@ deployment:
    WORKDIR /deployment/site
    RUN --no-cache ls
    WORKDIR /deployment
+   RUN echo "$DEPLOYMENT_BLOB_SERVICE_URL\$web$SAS_TOKEN"
    RUN --no-cache azcopy copy "/deployment/site" "$DEPLOYMENT_BLOB_SERVICE_URL\$web$SAS_TOKEN" --recursive=true --as-subdir=false
 
 all:
