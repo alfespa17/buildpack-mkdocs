@@ -39,6 +39,8 @@ deployment:
    ARG DEPLOYMENT_BLOB_SERVICE_URL
    ARG DEPLOYMENT_SITE_DIRECTORY
    ARG SAS_TOKEN
+   WORKDIR /deployment
+   RUN --no-cache pwd
    COPY deploy.ps1 deploy.ps1
    RUN --no-cache ls
    WORKDIR /deployment/site
