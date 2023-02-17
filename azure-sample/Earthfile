@@ -29,10 +29,11 @@ deployment:
    RUN mkdir /deployment/
    RUN cd /deployment
    WORKDIR /deployment
-
+   RUN ls
    RUN wget https://aka.ms/downloadazcopy-v10-linux
    RUN mkdir azcopy-exec 
    RUN tar -xzvf downloadazcopy-v10-linux -C ./azcopy-exec
+   RUN ls
    RUN chmod -x ./azcopy-exec/azcopy
    RUN cp azcopy /usr/local/bin/
    COPY +build/site site
