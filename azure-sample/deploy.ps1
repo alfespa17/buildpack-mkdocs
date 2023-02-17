@@ -11,4 +11,4 @@ $destination = "${blobservice}`$web?${sas}"
 write-host "Directory: ${directory}"
 
 # Send data to Azure Storage Account
-azcopy copy $directory $destination --recursive=true --as-subdir=false
+azcopy copy "${directory}" "${destination}" --recursive=true --as-subdir=false
