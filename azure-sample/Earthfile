@@ -50,7 +50,7 @@ deployment:
    RUN --no-cache ls
    WORKDIR /deployment
    RUN echo "$DEPLOYMENT_BLOB_SERVICE_URL\$web"
-   RUN --no-cache azcopy copy "/deployment/site" "DEPLOYMENT_BLOB_SERVICE_URL\$web" --recursive=true --as-subdir=false
+   RUN --no-cache azcopy copy "/deployment/site" "$DEPLOYMENT_BLOB_SERVICE_URL\$web" --recursive=true --as-subdir=false
 
 all:
    BUILD +build
