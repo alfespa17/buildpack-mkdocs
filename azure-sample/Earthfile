@@ -48,7 +48,6 @@ deployment:
    RUN --no-cache ls
    WORKDIR /deployment
    RUN echo "$DEPLOYMENT_BLOB_SERVICE_URL\$web$SAS_TOKEN"
-   CP
    RUN --no-cache ./deploy.sh
 
 all:
